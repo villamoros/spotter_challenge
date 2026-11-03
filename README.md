@@ -141,7 +141,7 @@ cd backend
 .\.venv\Scripts\python.exe manage.py test risk
 ```
 
-Frontend (59 tests):
+Frontend (66 tests):
 
 ```powershell
 cd frontend
@@ -162,7 +162,7 @@ This project was built in an AI-assisted workflow. Claude (Anthropic) wrote most
 - Chose the visual direction from the design references and reviewed every change.
 - The automated test suites, and the bilingual documentation.
 
-Every behaviour was verified by the test suites (86 backend, 63 frontend) and by manual checks in the browser.
+Every behaviour was verified by the test suites (86 backend, 66 frontend) and by manual checks in the browser.
 
 ## Known limitations
 

@@ -5,7 +5,7 @@
  */
 
 import { describe, expect, it } from 'vitest';
-import { formatDuration, formatLoad, formatLoadShort, formatMiles, formatRisk, levelColor, levelFromCode } from './risk.js';
+import { formatDuration, formatLoad, formatLoadShort, formatMiles, formatRisk, levelColor, levelFromCode, levelInk } from './risk.js';
 import { tEn } from '../test/render.jsx';
 
 describe('levelFromCode', () => {
@@ -27,6 +27,22 @@ describe('levelColor', () => {
 
   it('falls back to the light palette for an unknown theme', () => {
     expect(levelColor('low', 'sepia')).toBe(levelColor('low', 'light'));
+  });
+});
+
+describe('levelInk', () => {
+  it('uses dark ink on the light fills that are pale enough to need it', () => {
+    expect(levelInk('high', 'light')).toBe('#14130f');
+    expect(levelInk('unknown', 'light')).toBe('#14130f');
+  });
+
+  it('uses white ink on the darker light-theme fills', () => {
+    expect(levelInk('low', 'light')).toBe('#ffffff');
+    expect(levelInk('severe', 'light')).toBe('#ffffff');
+  });
+
+  it('uses dark ink on every dark-theme fill', () => {
+    expect(levelInk('severe', 'dark')).toBe('#14130f');
   });
 });
 

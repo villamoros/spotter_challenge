@@ -36,12 +36,12 @@ export const LEVEL_ORDER = ['low', 'moderate', 'high', 'severe', 'notravel'];
  */
 export const RISK_PALETTE = {
   light: {
-    low: '#b7d1a3',
-    moderate: '#ecd58c',
-    high: '#e4a56b',
-    severe: '#c4574a',
+    low: '#4f7a3a',
+    moderate: '#8f6a0c',
+    high: '#c96a1f',
+    severe: '#a8402f',
     notravel: '#3f2f50',
-    unknown: '#d6d1c7',
+    unknown: '#8e8a82',
   },
   dark: {
     low: '#7fae6c',
@@ -73,6 +73,20 @@ export function levelFromCode(code) {
 export function levelColor(level, theme = 'light') {
   const palette = RISK_PALETTE[theme] ?? RISK_PALETTE.light;
   return palette[level] ?? palette.unknown;
+}
+
+/**
+ * Return a text colour that stays readable on top of a level colour.
+ *
+ * Español: Devuelve un color de texto legible sobre el color de un nivel.
+ *
+ * @param {string} level - Level name.
+ * @param {string} [theme='light'] - 'light' or 'dark'.
+ * @returns {string} A CSS colour: white on the dark light-theme fills, near-black elsewhere.
+ */
+export function levelInk(level, theme = 'light') {
+  if (theme === 'dark') return '#14130f';
+  return level === 'high' || level === 'unknown' ? '#14130f' : '#ffffff';
 }
 
 /**

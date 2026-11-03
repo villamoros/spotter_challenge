@@ -10,7 +10,7 @@
 
 import { useI18n } from '../i18n/I18nProvider.jsx';
 import { Icon } from '../icons.jsx';
-import { levelColor, formatLoad } from '../domain/risk.js';
+import { levelColor, levelInk, formatLoad } from '../domain/risk.js';
 import { formatClock, formatWeekdayClock } from '../domain/time.js';
 import { routeLabel } from '../domain/trip.js';
 
@@ -75,7 +75,7 @@ export default function CheckpointDetail({ route, index, loadLb, onClose }) {
         })}
       </p>
 
-      <p className="detail__level" style={{ background: levelColor(cp.level, theme), color: theme === 'dark' ? '#14130f' : '#201f1d' }}>
+      <p className="detail__level" style={{ background: levelColor(cp.level, theme), color: levelInk(cp.level, theme) }}>
         {t(`risk.${cp.level}`)}
         {driverText && <span> · {t('checkpoint.decides', { driver: driverText })}</span>}
       </p>
