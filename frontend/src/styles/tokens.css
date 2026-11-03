@@ -1,0 +1,50 @@
+/* Design tokens. Every color, font and shadow comes from here.
+   Light is the default; dark is set by data-theme="dark" on <html> (see I18nProvider). */
+:root {
+  /* Typography: Raleway for headings and the brand, Lato for text and numbers. */
+  --font-display: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, Consolas, monospace;
+
+  --color-page: #ebe8e2;
+  --color-bg: #fbfaf7;
+  --color-text: #1f1e1b;
+  --color-text-soft: #5b5852;
+  --color-text-faint: #8e8a82;
+  --color-divider: rgba(31, 30, 27, 0.12);
+  --color-line: rgba(31, 30, 27, 0.26);
+  --color-accent: #b07a2e;
+  --color-accent-ink: #7a5214;
+  --color-accent-soft: #f8efe0;
+  --color-accent-strong: #f0dcb8;
+  --color-ink-inverse: #f5f3ef;
+  --color-danger-bg: #fbe9e6;
+  --color-danger-ink: #5b1f1b;
+  --color-danger: #c4574a;
+
+  --shadow-sm: 0 1px 2px rgba(31, 30, 27, 0.06);
+  --shadow-md: 0 8px 24px rgba(31, 30, 27, 0.16);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --color-page: #121311;
+  --color-bg: #1b1c19;
+  --color-text: #ece9e3;
+  --color-text-soft: #aba69d;
+  --color-text-faint: #7d786f;
+  --color-divider: rgba(236, 233, 227, 0.1);
+  --color-line: rgba(236, 233, 227, 0.24);
+  --color-accent: #d6a45e;
+  --color-accent-ink: #e8c088;
+  --color-accent-soft: rgba(214, 164, 94, 0.14);
+  --color-accent-strong: rgba(214, 164, 94, 0.26);
+  --color-ink-inverse: #14130f;
+  --color-danger-bg: rgba(224, 105, 92, 0.16);
+  --color-danger-ink: #f2b3ab;
+  --color-danger: #e0695c;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
