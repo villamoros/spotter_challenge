@@ -10,6 +10,8 @@ backend/.env. Se usan proveedores reales salvo que SPOTTER_DEMO=1.
 import os
 from pathlib import Path
 
+import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,12 +40,14 @@ ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# PostgreSQL is the only supported database, locally and in deployment.
+# Format: postgresql://USER:PASSWORD@HOST:PORT/NAME (add ?sslmode=require when the host needs TLS).
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
+if not DATABASE_URL:
+    raise ImproperlyConfigured(
+        "DATABASE_URL is not set. Example: postgresql://spotter:change-me@localhost:5432/spotter"
+    )
+DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600)}
 
 CACHES = {
     "default": {
